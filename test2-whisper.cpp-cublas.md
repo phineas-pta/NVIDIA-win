@@ -1,5 +1,7 @@
 # Test 2: build `whisper.cpp` with cuBLAS on Windows
 
+**update:** executable with cublas included https://github.com/ggerganov/whisper.cpp/releases/latest
+
 no need git clone just get zip https://github.com/ggerganov/whisper.cpp/archive/refs/heads/master.zip
 
 need Visual Studio console

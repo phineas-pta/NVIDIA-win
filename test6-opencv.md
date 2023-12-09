@@ -1,5 +1,9 @@
 # Test 6: build OpenCV with CUDA on Windows
 
+**update:** unofficial cuda-supported wheels: https://github.com/cudawarped/opencv-python-cuda-wheels/releases
+
+this guide here is more customized
+
 prepare at least 10gb disk space
 
 tested version: opencv v4.8
@@ -18,7 +22,6 @@ need Visual Studio console + prepare a fresh python env with `pip install numpy`
 ```batchfile
 SET CFLAGS=/MP
 SET CXXFLAGS=/MP
-SET CUDA_NVCC_FLAGS=--threads=0
 SET ENABLE_CONTRIB=1
 SET ENABLE_ROLLING=1
 SET CMAKE_ARGS=-D CMAKE_BUILD_TYPE=Release -D OPENCV_ENABLE_NONFREE=ON -D BUILD_EXAMPLES=OFF -D WITH_GSTREAMER=OFF -D WITH_CUDA=ON -D OPENCV_DNN_CUDA=ON -D CUDA_ARCH_BIN=█.█ -D CUDA_ARCH_PTX=█.█

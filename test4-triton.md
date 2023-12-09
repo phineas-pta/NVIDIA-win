@@ -2,7 +2,7 @@
 
 prepare at least 5gb disk space (4gb llvm + 1gb triton)
 
-tested version: triton v2.1.0 + llvm v17
+tested version: triton v2.2.0 + llvm v17
 
 ## preparation
 
@@ -10,17 +10,17 @@ need Visual Studio console + prepare a fresh python env
 ```
 git clone
 	--single-branch
-	--branch=release/2.1.x
+	--branch=release/2.2.x
 	--depth=1
 	--recurse-submodules
 	--shallow-submodules
 	https://github.com/openai/triton
 ```
-open file `python/setup.py` take note of LLVM commit hash, *e.g.* in line `version = "…"` or `rev = "…"`
+open file `python/setup.py` take note of LLVM commit hash, *e.g.* in line `version = "…"` or `rev = "…"` or file `cmake/llvm-hash.txt`
 
 ## build LLVM
 
-get full LLVM repo in zip: `https://github.com/llvm/llvm-project/archive/c5dede880d17.zip`<br />
+get full LLVM repo in zip: `https://github.com/llvm/llvm-project/archive/5e5a22caf88ac1ccfa8dc5720295fdeba0ad9372.zip`<br />
 change commit hash accordingly<br />
 DO NOT DO git clone & checkout coz repo too big, also don’t get `main HEAD` coz possible incompatibility
 

@@ -37,6 +37,7 @@ python tools/ci_build/build.py
 	--cudnn_home="%CUDA_PATH%"
 	--tensorrt_home="%CUDA_PATH%"
 	--cmake_generator="Visual Studio 17 2022"
+	--numpy_version="1.██.█"
 	--cmake_extra_defines="CMAKE_CUDA_ARCHITECTURES=██"
 ```
 may take >1h
