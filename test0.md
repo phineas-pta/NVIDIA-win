@@ -4,11 +4,13 @@ Visual Studio docs: https://learn.microsoft.com/en-us/cpp/build/building-on-the-
 
 initialize cmd with build tools: `"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"`
 
+initialize pwsh with build tools: `&{Import-Module 'C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -VsInstallPath 'C:\Program Files\Microsoft Visual Studio\2022\Community' -DevCmdArguments '-arch=x64'}`
+
 or edit start menu shortcut by adding `-arch=x64 -host_arch=x64`
 
 initialize cmd with mamba: `███\mambaforge\Scripts\activate.bat ███\mambaforge`
 
-initialize pwsh with mamba: `(& "███\mambaforge\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | ?{$_} | Invoke-Expression`
+initialize pwsh with mamba: `(& '███\mambaforge\Scripts\conda.exe' 'shell.powershell' 'hook') | Out-String | ?{$_} | Invoke-Expression`
 
 change conda env var: `conda env config vars set -n ███ XDG_CACHE_HOME=███/cache CUDA_MODULE_LOADING=LAZY`
 

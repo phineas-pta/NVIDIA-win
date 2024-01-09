@@ -6,7 +6,7 @@ this guide here is more customized
 
 prepare at least 10gb disk space
 
-tested version: opencv v4.8
+tested version: opencv v4.9
 ```
 git clone
 	--single-branch
@@ -37,7 +37,9 @@ if re-build then delete folder `_skbuild/` at each time
 
 if error `Compiler doesn't support baseline optimization flags` then add `-D CV_DISABLE_OPTIMIZATION=ON -D CPU_BASELINE="" -D CPU_DISPATCH=""`
 
-wheel file in `dist\opencv_contrib_python_rolling-4.8.███-cp3██-cp3██-win_amd64.whl`
+may take >1h
+
+wheel file in `dist\opencv_contrib_python_rolling-4.9.███-cp3██-cp3██-win_amd64.whl`
 
 test python code
 ```python

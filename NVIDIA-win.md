@@ -104,7 +104,7 @@ COPY lib\x64\cudnn*.lib "%CUDA_PATH%\lib\x64"
 COPY include\cudnn*.h   "%CUDA_PATH%\include"
 ```
 
-#### boost PyTorch with cudnn fix
+#### 🐍 boost PyTorch with cudnn fix
 
 normal pytorch usually not shipped with most recent cudnn, so users can replace pytorch linked `.dll` files to get more boost from recent update
 
@@ -139,7 +139,7 @@ COPY lib\nv*.lib     "%CUDA_PATH%\lib\x64"
 COPY include\Nv*.h   "%CUDA_PATH%\include"
 ```
 
-#### python packages for tensorrt (optional)
+#### 🐍 python packages for tensorrt (optional)
 
 only if u need those python pkgs
 

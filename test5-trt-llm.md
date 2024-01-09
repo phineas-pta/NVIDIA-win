@@ -2,39 +2,26 @@
 
 📑 in case u need official docs: https://github.com/NVIDIA/TensorRT-LLM/blob/main/windows/README.md
 
-tested version: tensorrt-llm v0.5.0
+tested version: tensorrt-llm v0.?.?
 ```
-pip install torch torchvision torchdata torchtext
-	--find-links=https://download.pytorch.org/whl/torch_stable.html
-pip install pywin32 build colored
-	huggingface-hub
-	tokenizers==0.13.3
-	transformers==4.31.0
-	diffusers==0.15.0
-	accelerate==0.20.3
-	polygraphy
-	onnx
-	mpi4py
-	cuda-python==12.2.0
-	sentencepiece
-pip install tensorrt_llm --no-deps --extra-index-url=https://pypi.nvidia.com
 git clone
 	--single-branch
-	--branch=release/0.5.0
+	--branch=main
 	--depth=1
 	--recurse-submodules
 	--shallow-submodules
 	https://github.com/NVIDIA/TensorRT-LLM
 cd TensorRT-LLM
+pip install -r requirements-dev-windows.txt
 ```
 download checkpoints:
 ```python
 from huggingface_hub import snapshot_download
 LIST_MODS = {
 	"gpt2-xl": "examples/gpt/gpt2-xl",
-	"bigcode/santacoder": "examples/gpt/santacoder",
-	"bigcode/starcoderbase-1b": "examples/gpt/starcoderbase-1b",
-	"bigscience/bloom-3b": "examples/bloom/bloom-3b"
+	"microsoft/phi-2": "examples/phi/phi-2",
+	"bigscience/bloom-3b": "examples/bloom/bloom-3b",
+	# "openai/whisper-large-v3": "examples/whisper/large-v3",  # prefer original checkpoint instead of huggingface
 }
 for k, v in LIST_MODS.items():
 	snapshot_download(
