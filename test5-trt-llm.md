@@ -1,5 +1,7 @@
 # Test 5: try out TensorRT-LLM on Windows
 
+**update:** this sucks: need MPI, need a lot VRAM, no memory off-loading ⇒ instead: use https://github.com/mozilla-Ocho/llamafile
+
 📑 in case u need official docs: https://github.com/NVIDIA/TensorRT-LLM/blob/main/windows/README.md
 
 tested version: tensorrt-llm v0.?.?

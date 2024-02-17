@@ -1,5 +1,7 @@
 # Test 1: build onnxruntime with cuda + cudnn + tensorrt on windows
 
+**update:** starting from v1.17 official suppport for cuda v12 but incompatible with cudnn v9
+
 📑 in case u need official docs:
 - https://onnxruntime.ai/docs/build/inferencing.html
 - https://github.com/microsoft/onnxruntime/blob/main/tools/ci_build/build.py

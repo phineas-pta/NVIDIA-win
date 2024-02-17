@@ -12,18 +12,43 @@ initialize cmd with mamba: `███\mambaforge\Scripts\activate.bat ███\
 
 initialize pwsh with mamba: `(& '███\mambaforge\Scripts\conda.exe' 'shell.powershell' 'hook') | Out-String | ?{$_} | Invoke-Expression`
 
-change conda env var: `conda env config vars set -n ███ XDG_CACHE_HOME=███/cache CUDA_MODULE_LOADING=LAZY`
+change conda env var: `conda env config vars set -n ███ XDG_CACHE_HOME=███/cache`
+
+on windows, cuda < 12.3, should add `CUDA_MODULE_LOADING=LAZY`
 
 install torch: `pip install torch torchvision torchaudio --find-links=https://download.pytorch.org/whl/torch_stable.html`
 
-dump info:
+install onnx: `pip install onnxruntime-gpu --extra-index-url=https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/`
+
+quick convert onnx trt `trtexec --threads --best --builderOptimizationLevel=5 --onnx=model.onnx --saveEngine=model.trt`
+
+build pytorch from source: https://pytorch.org/docs/stable/notes/windows.html
+
+## dump info:
+
 - `python -m torch.utils.collect_env`
 - `nvidia-smi --format=csv --query-gpu=name,compute_cap,driver_version,vbios_version,inforom.image`
 - `nvidia-smi --query --display=MEMORY,UTILIZATION,POWER,CLOCK,COMPUTE,PERFORMANCE,VOLTAGE`
 
-quick convert onnx trt `trtexec --onnx=model.onnx --saveEngine=model.trt --best --builderOptimizationLevel=5 --threads`
-
-build pytorch from source: https://pytorch.org/docs/stable/notes/windows.html
+```python
+import subprocess as sp
+print(sp.Popen(["nvidia-smi"], stdout=sp.PIPE, stderr=sp.PIPE).communicate()[0].split(b" "*48)[0].decode("utf-8"))
+```
+official python interface: `pip install nvidia-ml-py`
+```python
+import pynvml
+pynvml.nvmlInit()
+print("Driver Version:", pynvml.nvmlSystemGetDriverVersion())
+GB_NUM = 1024**3
+for i in range(pynvml.nvmlDeviceGetCount()):
+	handle = pynvml.nvmlDeviceGetHandleByIndex(i)
+	info = pynvml.nvmlDeviceGetMemoryInfo(handle)
+	print(f"Device {i}:", pynvml.nvmlDeviceGetName(handle))
+	print(f"\tTotal memory: {info.total / GB_NUM :.1f} GiB")
+	print( f"\tFree memory: {info.free  / GB_NUM :.1f} GiB")
+	print( f"\tUsed memory: {info.used  / GB_NUM :.1f} GiB")
+pynvml.nvmlShutdown()
+```
 
 ## test compile something
 

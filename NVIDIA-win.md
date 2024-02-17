@@ -6,13 +6,15 @@
 
 📑 in case u still somehow need official docs:
 - CUDA: https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html
-- cuDNN: https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html
+- cuDNN: https://docs.nvidia.com/deeplearning/cudnn/installation/windows.html
 - TensorRT: https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html
 
 📑 in case u need info about cuda compute capability:
 - https://developer.nvidia.com/cuda-gpus
+- https://docs.nvidia.com/deeplearning/cudnn/reference/support-matrix.html
 - https://docs.nvidia.com/deeplearning/tensorrt/support-matrix/index.html#hardware-precision-matrix
 - https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new
+- https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#gpu-feature-list
 
 prepare at least 15gb disk space (10gb msvc + 5gb nvidia)
 
@@ -93,6 +95,8 @@ if u prefer pwsh instead, in following steps replace `COPY` with `Copy-Item` and
 
 ### 3️⃣ cuDNN
 
+**update:** new graphical installer starting from v9
+
 ⏬ **download** either:
 - https://developer.nvidia.com/rdp/cudnn-download (latest version)
 - https://developer.nvidia.com/rdp/cudnn-archive (older version)
@@ -116,6 +120,8 @@ copy 7 cudnn `.dll` files to pytorch lib directory
 
 *N.B.* this library is in official docs but poorly explained, should be improved in future version of cudnn
 
+**update:** no need this step starting from cudnn v9
+
 ⏬ **download**: https://www.winimage.com/zLibDll/zlib123dllx64.zip
 
 👉 extract zip to a location, navigate console to in the extracted folder then run
@@ -127,7 +133,10 @@ COPY dll_x64\zlibwapi.lib "%CUDA_PATH%\lib\x64"
 
 ### 4️⃣ TensorRT
 
-⏬ **download**: https://developer.nvidia.com/tensorrt-download
+⏬ **download**:
+- latest stable v8.6: https://developer.nvidia.com/tensorrt-download
+- pre-release v9.1: https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/secure/9.1.0/tars/tensorrt-9.1.0.4.windows10.x86_64.cuda-12.2.llm.beta.zip
+- pre-release v9.2: https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/9.2.0/tensorrt-9.2.0.5.windows10.x86_64.cuda-12.2.llm.beta.zip
 
 if latest version has multiple choices: select “GA” (general availability) not “EA” (early access) nor “RC” (release candidate)
 
@@ -168,6 +177,10 @@ for e.g.
 
 cuda header files: https://gitlab.com/nvidia/headers
 
-*appendix*: other hardware toolkits:
+*appendix 1*: deliverable links:
+- https://developer.download.nvidia.com/compute/cuda/redist/
+- https://developer.download.nvidia.com/compute/cudnn/redist/
+
+*appendix 2*: other hardware toolkits:
 - https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html
 - https://www.amd.com/en/developer/resources/rocm-hub/hip-sdk.html
