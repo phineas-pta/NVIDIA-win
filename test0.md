@@ -62,15 +62,28 @@ if not included add `.lib` files from `%CUDA_PATH%\lib\x64`
 
 select “Build” → “Build Solution”
 
-## compile torch2trt
+## build `torch2trt`
 
 need Visual Studio console + prepare a fresh python env
 ```bash
-pip install packaging torch torchvision --find-links https://download.pytorch.org/whl/torch_stable.html
+pip install packaging torch torchvision --find-links=https://download.pytorch.org/whl/torch_stable.html
 pip install git+https://github.com/NVIDIA-AI-IOT/torch2trt.git
 ```
 
-## compile `xformers`
+## build `bitsandbytes`
+
+see https://huggingface.co/docs/bitsandbytes/main/en/installation?OS+system=Windows
+
+get https://github.com/TimDettmers/bitsandbytes/archive/refs/heads/main.zip
+```bash
+pip install -r requirements-dev.txt
+cmake -S . -D COMPUTE_BACKEND=cuda -D COMPUTE_CAPABILITY=██
+cmake --build . --config Release --parallel
+pip wheel . --wheel-dir="dist" --verbose --find-links=https://download.pytorch.org/whl/torch_stable.html
+```
+verify after install: `python -m bitsandbytes`
+
+## build `xformers`
 
 need Visual Studio console + prepare a fresh python env
 ```batchfile
@@ -96,12 +109,9 @@ cd xformers
 
 pip wheel . --wheel-dir=dist --verbose --find-links=https://download.pytorch.org/whl/torch_stable.html
 ```
-after install
-```bash
-python -m xformers.info
-```
+verify after install: `python -m xformers.info`
 
-## compile jax
+## build `jax`
 
 no need git clone just get zip from https://github.com/google/jax/archive/refs/heads/main.zip
 
