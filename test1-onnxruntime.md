@@ -1,18 +1,16 @@
 # Test 1: build onnxruntime with cuda + cudnn + tensorrt on windows
 
-**update:** starting from v1.17 official suppport for cuda v12 but incompatible with cudnn v9
-
 📑 in case u need official docs:
 - https://onnxruntime.ai/docs/build/inferencing.html
 - https://github.com/microsoft/onnxruntime/blob/main/tools/ci_build/build.py
 
 prepare at least 3gb disk space
 
-tested version: onnxruntime v1.16.3
+tested version: onnxruntime v1.18.1
 ```
 git clone
 	--single-branch
-	--branch=rel-1.16.3
+	--branch=rel-1.18.1
 	--depth=1
 	--recurse-submodules
 	--shallow-submodules
@@ -44,7 +42,7 @@ python tools/ci_build/build.py
 ```
 may take >1h
 
-wheel file in `build\Release\Release\dist\onnxruntime_gpu-1.16.3-cp3██-cp3██-win_amd64.whl`
+wheel file in `build\Release\Release\dist\onnxruntime_gpu-1.18.1-cp3██-cp3██-win_amd64.whl`
 
 test python code
 ```python

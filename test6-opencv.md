@@ -6,7 +6,7 @@ this guide here is more customized
 
 prepare at least 10gb disk space
 
-tested version: opencv v4.9
+tested version: opencv v4.10
 ```
 git clone
 	--single-branch
@@ -39,7 +39,7 @@ if error `Compiler doesn't support baseline optimization flags` then add `-D CV_
 
 may take >1h
 
-wheel file in `dist\opencv_contrib_python_rolling-4.9.███-cp3██-cp3██-win_amd64.whl`
+wheel file in `dist\opencv_contrib_python_rolling-4.10.███-cp3██-cp3██-win_amd64.whl`
 
 test python code
 ```python

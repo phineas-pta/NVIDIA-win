@@ -18,7 +18,7 @@
 
 prepare at least 15gb disk space (10gb msvc + 5gb nvidia)
 
-tested combination: Visual Studio v17 (2022) + CUDA v12.1 + cuDNN v8.9 + TensorRT v8.6
+tested combination: Visual Studio v17 (2022) + CUDA v12.5 + cuDNN v9.2 + TensorRT v10.2
 
 ## 🔖 easy 1st steps with graphical interface 📱
 
@@ -47,9 +47,9 @@ if need compile binaries with cuda
 🔎 verify after install: in Start menu, there’re 2 new items “Developer Command Prompt for VS 2022” & “Developer PowerShell for VS 2022”
 
 if u open any of those 2 and run any of these following commands, it should return messages instead of errors
-- `cmake --version` returns `3.27.█-msvc1`
-- `cl` returns `19.38.███`
-- `msbuild -ver` returns `17.8.█`
+- `cmake --version` returns `3.2█.█-msvc1`
+- `cl` returns `19.██.███`
+- `msbuild -ver` returns `17.█.█`
 - `ninja --version` returns `1.11.█`
 
 see where to find header files: `echo %INCLUDE%` (cmd) or `echo $env:INCLUDE` (pwsh)
@@ -133,10 +133,7 @@ COPY dll_x64\zlibwapi.lib "%CUDA_PATH%\lib\x64"
 
 ### 4️⃣ TensorRT
 
-⏬ **download**:
-- latest stable v8.6: https://developer.nvidia.com/tensorrt-download
-- pre-release v9.1: https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/secure/9.1.0/tars/tensorrt-9.1.0.4.windows10.x86_64.cuda-12.2.llm.beta.zip
-- pre-release v9.2: https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/9.2.0/tensorrt-9.2.0.5.windows10.x86_64.cuda-12.2.llm.beta.zip
+⏬ **download**: https://developer.nvidia.com/tensorrt-download
 
 if latest version has multiple choices: select “GA” (general availability) not “EA” (early access) nor “RC” (release candidate)
 

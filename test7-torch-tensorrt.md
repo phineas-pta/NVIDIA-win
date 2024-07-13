@@ -1,5 +1,7 @@
 # Test 7: build Torch-TensorRT on Windows
 
+**update:** official windows wheels strating from v2.3: `pip install torch_tensorrt`
+
 📑 in case u need official docs:
 - https://pytorch.org/TensorRT/getting_started/installation.html (full setup on linux)
 - https://pytorch.org/TensorRT/getting_started/getting_started_with_windows.html (no python wheel)
@@ -9,11 +11,11 @@
 
 prepare at least 5gb disk space (4gb libtorch + 1gb torch_tensorrt)
 
-tested version: torch-tensorrt v1.4
+tested version: torch-tensorrt v2.2
 
 ## preparation
 ```bash
-git clone --single-branch --branch=release/1.4 --depth=1 https://github.com/pytorch/TensorRT
+git clone --single-branch --branch=release/2.2 --depth=1 https://github.com/pytorch/TensorRT
 ```
 get bazel from either: (rename downloaded file to `bazel.exe`)
 - https://github.com/bazelbuild/bazel/releases
@@ -28,13 +30,13 @@ edit file `WORKSPACE`:
 ```starlark
 new_local_repository(
     name = "libtorch",
-    build_file = "third_party/libtorch/BUILD",
+    build_file = "@//third_party/libtorch:BUILD",
     path = "<path to>/libtorch",
 )
 
 new_local_repository(
     name = "libtorch_pre_cxx11_abi",
-    build_file = "third_party/libtorch/BUILD",
+    build_file = "@//third_party/libtorch:BUILD",
     path = "<path to>/libtorch",
 )
 
@@ -144,7 +146,7 @@ edit file `setup.py`:
 - remove block `if … os.mknod(…)`
 - inside function `build_libtorchtrt_pre_cxx11_abi(…)` add `cmd.append("--features=windows_export_all_symbols")` properly
 - change line `libraries=["torchtrt"],` to `libraries=["torch_tensorrt.dll.if"],`
-- change block `extra_compile_args=[…] + […]` to `extra_compile_args=["/D", "PYBIND11_EXPORT=", "/DNO_EXPORT", f"-D_GLIBCXX_USE_CXX11_ABI={int(CXX11_ABI)}"]`
+- change block `extra_compile_args=[…] + […]` to `extra_compile_args=["/DPYBIND11_EXPORT=", "/DNO_EXPORT", f"-D_GLIBCXX_USE_CXX11_ABI={int(CXX11_ABI)}"]`
 - change block `extra_link_args=[…] + […]` to `extra_link_args=["/OPT:NOREF", f"-D_GLIBCXX_USE_CXX11_ABI={int(CXX11_ABI)}"]`
 
 install python packages in file `pyproject.toml` then remove `torch` & `tensorrt` from file
