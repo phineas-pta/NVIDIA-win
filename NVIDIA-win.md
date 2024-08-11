@@ -18,7 +18,7 @@
 
 prepare at least 15gb disk space (10gb msvc + 5gb nvidia)
 
-tested combination: Visual Studio v17 (2022) + CUDA v12.5 + cuDNN v9.2 + TensorRT v10.2
+tested combination: Visual Studio v17 (2022) + CUDA v12.5 + cuDNN v9.3 + TensorRT v10.3
 
 ## 🔖 easy 1st steps with graphical interface 📱
 
@@ -110,9 +110,11 @@ COPY include\cudnn*.h   "%CUDA_PATH%\include"
 
 #### 🐍 boost PyTorch with cudnn fix
 
-normal pytorch usually not shipped with most recent cudnn, so users can replace pytorch linked `.dll` files to get more boost from recent update
+pytorch embedded with a minimal cuda runtime but usually not shipped with most recent cudnn, so users can replace pytorch linked `.dll` files to get more boost from recent update
 
-get pytorch lib directory: `python -c "import torch as _; print(_.__path__[0] + r'\lib')"`
+get pytorch cudnn version: `python -c "import torch; print(torch.backends.cudnn.version())"`
+
+get pytorch lib directory: `python -c "import torch; print(torch.__path__[0] + r'\lib')"`
 
 copy 7 cudnn `.dll` files to pytorch lib directory
 

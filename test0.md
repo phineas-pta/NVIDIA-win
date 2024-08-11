@@ -16,9 +16,13 @@ change conda env var: `conda env config vars set -n ███ XDG_CACHE_HOME=█
 
 on windows, cuda < 12.3, should add `CUDA_MODULE_LOADING=LAZY`
 
+some basic python package: `pip install jupyterlab ipywidgets scikit-learn-intelex seaborn sympy tqdm tensorboard cupy-cuda12x`
+
 install torch: `pip install torch torchvision torchaudio --find-links=https://download.pytorch.org/whl/torch_stable.html`
 
 install onnx: `pip install onnxruntime-gpu --extra-index-url=https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/`
+
+install hf ecosystem: `pip install transformers diffusers accelerate "datasets[audio,vision]" tokenizers peft bitsandbytes "optimum[onnxruntime-gpu]" sentence_transformers timm`
 
 quick convert onnx trt `trtexec --threads --best --builderOptimizationLevel=5 --onnx=model.onnx --saveEngine=model.trt`
 
@@ -121,10 +125,10 @@ pip install numpy build
 python build/build.py
 	--bazel_path="<path to>/bazel.exe"
 	--enable_cuda
-	--cuda_path="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.1"
-	--cudnn_path="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.1"
-	--cuda_version="12.1"
-	--cudnn_version="8.9.6"
+	--cuda_path="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.5"
+	--cudnn_path="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.5"
+	--cuda_version="12.5"
+	--cudnn_version="9.3.0"
 	--cuda_compute_capabilities="sm_██"
 ```
 cannot use `%CUDA_PATH%` coz it failed to parse windows path
