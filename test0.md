@@ -8,9 +8,9 @@ initialize pwsh with build tools: `&{Import-Module 'C:\Program Files\Microsoft V
 
 or edit start menu shortcut by adding `-arch=x64 -host_arch=x64`
 
-initialize cmd with mamba: `███\mambaforge\Scripts\activate.bat ███\mambaforge`
+initialize cmd with mamba: `███\miniforge3\Scripts\activate.bat ███\miniforge3`
 
-initialize pwsh with mamba: `(& '███\mambaforge\Scripts\conda.exe' 'shell.powershell' 'hook') | Out-String | ?{$_} | Invoke-Expression`
+initialize pwsh with mamba: `(& '███\miniforge3\Scripts\conda.exe' 'shell.powershell' 'hook') | Out-String | ?{$_} | Invoke-Expression`
 
 change conda env var: `conda env config vars set -n ███ XDG_CACHE_HOME=███/cache`
 
@@ -18,15 +18,18 @@ on windows, cuda < 12.3, should add `CUDA_MODULE_LOADING=LAZY`
 
 some basic python package: `pip install jupyterlab ipywidgets scikit-learn-intelex seaborn sympy tqdm tensorboard cupy-cuda12x`
 
-install torch: `pip install torch torchvision torchaudio --find-links=https://download.pytorch.org/whl/torch_stable.html`
-
-install onnx: `pip install onnxruntime-gpu --extra-index-url=https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/`
+install deep learning frameworks:
+- torch: see https://pytorch.org/get-started/locally/
+- onnx: see https://onnxruntime.ai/getting-started
+- paddlepaddle: see https://www.paddlepaddle.org.cn/documentation/docs/en/install/pip/windows-pip_en.html
 
 install hf ecosystem: `pip install transformers diffusers accelerate "datasets[audio,vision]" tokenizers peft bitsandbytes "optimum[onnxruntime-gpu]" sentence_transformers timm`
 
 quick convert onnx trt `trtexec --threads --best --builderOptimizationLevel=5 --onnx=model.onnx --saveEngine=model.trt`
 
 build pytorch from source: https://pytorch.org/docs/stable/notes/windows.html
+
+intel distribution for python: `mamba install intelpython3_full -c https://software.repos.intel.com/python/conda/`
 
 ## dump info:
 
@@ -93,7 +96,7 @@ need Visual Studio console + prepare a fresh python env
 ```batchfile
 pip install ninja torch --find-links=https://download.pytorch.org/whl/torch_stable.html
 
-SET TORCH_CUDA_ARCH_LIST=█.█
+SET TORCH_CUDA_ARCH_LIST=█.█+PTX
 SET XFORMERS_BUILD_TYPE=Release
 SET DISTUTILS_USE_SDK=1
 ```
@@ -117,20 +120,20 @@ verify after install: `python -m xformers.info`
 
 ## build `jax`
 
-no need git clone just get zip from https://github.com/google/jax/archive/refs/heads/main.zip
+no need git clone just get zip from https://github.com/jax-ml/jax/archive/refs/heads/main.zip
 
 need Visual Studio console + prepare a fresh python env
 ```
 pip install numpy build
 python build/build.py
 	--bazel_path="<path to>/bazel.exe"
+	--bazel_options=--repo_env=LOCAL_CUDA_PATH="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6"
+	--bazel_options=--repo_env=LOCAL_CUDNN_PATH="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6"
 	--enable_cuda
-	--cuda_path="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.5"
-	--cudnn_path="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.5"
-	--cuda_version="12.5"
-	--cudnn_version="9.3.0"
 	--cuda_compute_capabilities="sm_██"
 ```
 cannot use `%CUDA_PATH%` coz it failed to parse windows path
 
 FAILED: problem with bazel build, no support for cuda windows
+
+linux-only: `pip install 'jax[cuda12_local]'`

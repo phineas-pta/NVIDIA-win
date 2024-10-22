@@ -9,7 +9,7 @@
 - https://github.com/pytorch/TensorRT/issues/856 (help to build python wheel)
 - https://github.com/pytorch/TensorRT/compare/main...yuriishutkin:Torch-TensorRT:windows
 
-prepare at least 5gb disk space (4gb libtorch + 1gb torch_tensorrt)
+prepare at least 5 GiB disk space (4 GiB libtorch + 1 GiB torch_tensorrt)
 
 tested version: torch-tensorrt v2.2
 
@@ -43,25 +43,25 @@ new_local_repository(
 new_local_repository(
     name = "cuda",
     build_file = "@//third_party/cuda:BUILD",
-    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.1",
+    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6",
 )
 
 new_local_repository(
     name = "cublas",
     build_file = "@//third_party/cublas:BUILD",
-    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.1",
+    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6",
 )
 
 new_local_repository(
     name = "cudnn",
     build_file = "@//third_party/cudnn/local:BUILD",
-    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.1",
+    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6",
 )
 
 new_local_repository(
     name = "tensorrt",
     build_file = "@//third_party/tensorrt/local:BUILD",
-    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.1",
+    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6",
 )
 ```
 edit file `.bazelrc`: change `-fdiagnostics-color=always` to `/diagnostics:caret` and `-std=c++17` to `/std:c++17`

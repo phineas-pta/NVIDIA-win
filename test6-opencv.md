@@ -4,7 +4,7 @@
 
 this guide here is more customized
 
-prepare at least 10gb disk space
+prepare at least 10 GiB disk space
 
 tested version: opencv v4.10
 ```

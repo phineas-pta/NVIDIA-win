@@ -5,14 +5,15 @@
 no need git clone just get zip https://github.com/ggerganov/whisper.cpp/archive/refs/heads/master.zip
 
 need Visual Studio console
-```batchfile
-cmake -S . -B build -D WHISPER_CUBLAS=1 -D CMAKE_BUILD_TYPE=Release
-msbuild build\ALL_BUILD.vcxproj -noLogo -maxCpuCount -property:Configuration=Release
+```powershell
+cmake -S . -B build -D CMAKE_BUILD_TYPE=Release -D WHISPER_CUBLAS=ON
+msbuild build\ALL_BUILD.vcxproj -noLogo -maxCpuCount -property:Configuration=Release -verbosity:minimal
+# cmake --build build --config Release --parallel
 ```
 download to folder `models/` any of https://huggingface.co/ggerganov/whisper.cpp/tree/main
 
 normal console (no need Visual Studio nor python)
-```batchfile
+```powershell
 build\bin\Release\main --threads=█ --print-colors --print-progress --model models\ggml-large.bin --file=samples\jfk.wav
 ```
 additional options: `--language=fr --translate --prompt="initial prompt" --output-srt --output-file=yolo`

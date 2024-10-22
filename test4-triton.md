@@ -1,6 +1,8 @@
 # Test 4: build `triton` to use `xformers` on Windows
 
-prepare at least 5gb disk space (4gb llvm + 1gb triton)
+**update:** unofficial windows wheels: https://github.com/woct0rdho/triton-windows/releases
+
+prepare at least 5 GiB disk space (4 GiB llvm + 1 GiB triton)
 
 tested version: triton v2.3.0 + llvm v17
 

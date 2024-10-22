@@ -4,7 +4,7 @@
 - https://onnxruntime.ai/docs/build/inferencing.html
 - https://github.com/microsoft/onnxruntime/blob/main/tools/ci_build/build.py
 
-prepare at least 3gb disk space
+prepare at least 3 GiB disk space
 
 tested version: onnxruntime v1.19.2
 ```
@@ -38,7 +38,7 @@ python tools/ci_build/build.py
 	--tensorrt_home="%CUDA_PATH%"
 	--cmake_generator="Visual Studio 17 2022"
 	--numpy_version="1.██.█"
-	--cmake_extra_defines="CMAKE_CUDA_ARCHITECTURES=██"
+	--cmake_extra_defines="CMAKE_CUDA_ARCHITECTURES=native"
 ```
 may take >1h
 

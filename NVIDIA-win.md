@@ -16,9 +16,9 @@
 - https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new
 - https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#gpu-feature-list
 
-prepare at least 15gb disk space (10gb msvc + 5gb nvidia)
+prepare at least 15 GiB disk space (10 GiB msvc + 5 GiB nvidia)
 
-tested combination: Visual Studio v17 (2022) + CUDA v12.6 + cuDNN v9.4 + TensorRT v10.4
+tested combination: Visual Studio v17 (2022) + CUDA v12.6 + cuDNN v9.5 + TensorRT v10.5
 
 ## 🔖 easy 1st steps with graphical interface 📱
 
@@ -27,6 +27,7 @@ tested combination: Visual Studio v17 (2022) + CUDA v12.6 + cuDNN v9.4 + TensorR
 ⏬ **download**: https://www.nvidia.com/download/index.aspx
 
 alternatively install companion software:
+- https://www.nvidia.com/en-us/software/nvidia-app/
 - https://www.nvidia.com/en-us/geforce/geforce-experience/
 - https://www.nvidia.com/en-us/design-visualization/software/rtx-experience/
 

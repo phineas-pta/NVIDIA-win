@@ -13,15 +13,16 @@ git clone
 if intel cpu:
 - download intel toolkit: https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html
 - update Visual Studio beforehand coz shitty installer try to update Visual Studio and mess up !!! (both online & offline installer)
-- select at least “c++ compiler” + “math kernel library” (need at least 12gb additionally)
+- select at least “c++ compiler” + “math kernel library” (need at least 12 GiB additionally)
 - or `pip install dpcpp-cpp-rt mkl-devel mkl-static mkl-include`
 
 if not intel cpu: add `-D OPENMP_RUNTIME=NONE -D WITH_MKL=OFF` to command below
 
 need Visual Studio console + prepare a fresh python env with `pip install pybind11`
-```batchfile
+```powershell
 cmake -S . -B build -D WITH_CUDA=ON -D WITH_CUDNN=ON -D CUDA_DYNAMIC_LOADING=ON -D CUDA_NVCC_FLAGS="--threads=0" -D CUDA_ARCH_LIST=█.█
-msbuild build\ALL_BUILD.vcxproj -noLogo -maxCpuCount -property:Configuration=Release
+msbuild build\ALL_BUILD.vcxproj -noLogo -maxCpuCount -property:Configuration=Release -verbosity:minimal
+# cmake --build build --config Release --parallel
 ```
 
 then navigate console to folder `python/`
