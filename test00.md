@@ -1,35 +1,6 @@
-# Test 0: compiling cuda binaries in Visual Studio<br />(just a draft, dont pay attention to this file)
+# Test 0: compiling cuda binaries<br />(just a draft, dont pay attention to this file)
 
 Visual Studio docs: https://learn.microsoft.com/en-us/cpp/build/building-on-the-command-line
-
-initialize cmd with build tools: `"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"`
-
-initialize pwsh with build tools: `&{Import-Module 'C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -VsInstallPath 'C:\Program Files\Microsoft Visual Studio\2022\Community' -DevCmdArguments '-arch=x64'}`
-
-or edit start menu shortcut by adding `-arch=x64 -host_arch=x64`
-
-initialize cmd with mamba: `███\miniforge3\Scripts\activate.bat ███\miniforge3`
-
-initialize pwsh with mamba: `(& '███\miniforge3\Scripts\conda.exe' 'shell.powershell' 'hook') | Out-String | ?{$_} | Invoke-Expression`
-
-change conda env var: `conda env config vars set -n ███ XDG_CACHE_HOME=███/cache`
-
-on windows, cuda < 12.3, should add `CUDA_MODULE_LOADING=LAZY`
-
-some basic python package: `pip install jupyterlab ipywidgets scikit-learn-intelex seaborn sympy tqdm tensorboard cupy-cuda12x`
-
-install deep learning frameworks:
-- torch: see https://pytorch.org/get-started/locally/
-- onnx: see https://onnxruntime.ai/getting-started
-- paddlepaddle: see https://www.paddlepaddle.org.cn/documentation/docs/en/install/pip/windows-pip_en.html
-
-install hf ecosystem: `pip install transformers diffusers accelerate "datasets[audio,vision]" tokenizers peft bitsandbytes "optimum[onnxruntime-gpu]" sentence_transformers timm`
-
-quick convert onnx trt `trtexec --threads --best --builderOptimizationLevel=5 --onnx=model.onnx --saveEngine=model.trt`
-
-build pytorch from source: https://pytorch.org/docs/stable/notes/windows.html
-
-intel distribution for python: `mamba install intelpython3_full -c https://software.repos.intel.com/python/conda/`
 
 ## dump info:
 
