@@ -43,7 +43,12 @@ initialize cmd with rtools: `C:/rtools██/msys2_shell.cmd -defterm -here -no-
 
 *N.B.*: use UCRT64 as per https://stackoverflow.com/a/76552265/10805680
 
-install build tools: `pacman -Sy mingw-w64-ucrt-x86_64-make mingw-w64-ucrt-x86_64-gcc`
+install additional build tools:
+```bash
+pacman -Suy
+pacman -Sy "${MINGW_PACKAGE_PREFIX}-make" "${MINGW_PACKAGE_PREFIX}-gcc"
+pacman -Scc
+```
 
 ## other
 
