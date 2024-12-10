@@ -50,7 +50,23 @@ pacman -Sy "${MINGW_PACKAGE_PREFIX}-make" "${MINGW_PACKAGE_PREFIX}-gcc"
 pacman -Scc
 ```
 
+more lightweight alternative: https://github.com/skeeto/w64devkit/releases
+
 ## other
+
+Julia:
+```julia
+import Pkg; Pkg.add("CUDA")
+using CUDA
+CUDA.set_runtime_version!(local_toolkit=true)
+# then restart Julia
+CUDA.versioninfo() # run this to save settings
+
+N = 2^20
+x = CUDA.fill(1.0f0, N);
+y = CUDA.fill(2.0f0, N);
+z = x .+ y;
+```
 
 quick convert onnx trt `trtexec --threads --best --builderOptimizationLevel=5 --onnx=model.onnx --saveEngine=model.trt`
 

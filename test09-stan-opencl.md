@@ -7,7 +7,7 @@
 
 prepare at least 2 GiB disk space
 
-tested version: CmdStan v2.35.0: https://github.com/stan-dev/cmdstan/releases/download/v2.35.0/cmdstan-2.35.0.tar.gz
+tested version: CmdStan v2.36.0: https://github.com/stan-dev/cmdstan/releases/download/v2.36.0/cmdstan-2.36.0.tar.gz
 
 untar the file then create a file named `local` inside the `make` folder with:
 ```
@@ -29,7 +29,7 @@ need Rtools Msys2 console setup with `mingw32-make` + `g++`
 mingw32-make -j build
 ```
 
-additional step: `export PATH=$PATH:███/cmdstan-2.35.0/stan/lib/stan_math/lib/tbb`
+additional step: `export PATH=$PATH:███/cmdstan-2.36.0/stan/lib/stan_math/lib/tbb`
 
 **R script for installation**
 ```r
@@ -59,20 +59,20 @@ install_cmdstan(cores = parallel::detectCores(logical = FALSE), overwrite = TRUE
 **run test**
 
 get my test files and put in the `examples` folder:
-- stan file: https://github.com/phineas-pta/Bayesian-Methods-for-Hackers-using-PyStan/blob/main/stan%20files/test0ex1_noOutliers_full.stan
-- data file: https://github.com/phineas-pta/Bayesian-Methods-for-Hackers-using-PyStan/blob/main/stan%20files/test0ex1_noOutliers.data.json
+- stan file: https://github.com/phineas-pta/Bayesian-Methods-for-Hackers-using-PyStan/blob/main/stan%20files/chap2ex2.stan
+- data file: https://github.com/phineas-pta/Bayesian-Methods-for-Hackers-using-PyStan/blob/main/stan%20files/chap2ex2.data.json
 
 test:
 ```
-mingw32-make -j examples/test0ex1_noOutliers_full.exe
+mingw32-make -j examples/chap2ex2.exe
 
-examples/test0ex1_noOutliers_full.exe optimize data file=examples/test0ex1_noOutliers.data.json output file=examples/test0ex1_optim.csv
+examples/chap2ex2.exe optimize data file=examples/chap2ex2.data.json output file=examples/chap2ex2_optim.csv
 
-examples/test0ex1_noOutliers_full.exe sample num_chains=4 num_samples=50000 num_warmup=10000 thin=5 data file=examples/test0ex1_noOutliers.data.json output file=examples/test0ex1_fit.csv diagnostic_file=examples/test0ex1_dia.csv refresh=5000 num_threads=4
+examples/chap2ex2.exe sample num_chains=4 num_samples=50000 num_warmup=10000 thin=5 data file=examples/chap2ex2.data.json output file=examples/chap2ex2_fit.csv diagnostic_file=examples/chap2ex2_dia.csv refresh=5000 num_threads=4
 
-bin/stansummary.exe examples/test0ex1_fit_*.csv
+bin/stansummary.exe examples/chap2ex2_fit_*.csv
 
-examples/test0ex1_noOutliers_full.exe variational data file=examples/test0ex1_noOutliers.data.json output file=examples/test0ex1_advi.csv
+examples/chap2ex2.exe variational data file=examples/chap2ex2.data.json output file=examples/chap2ex2_advi.csv
 
-examples/test0ex1_noOutliers_full.exe diagnose data file=examples/test0ex1_noOutliers.data.json output file=examples/test0ex1_diag.csv
+examples/chap2ex2.exe diagnose data file=examples/chap2ex2.data.json output file=examples/chap2ex2_diag.csv
 ```

@@ -18,7 +18,7 @@
 
 prepare at least 15 GiB disk space (10 GiB msvc + 5 GiB nvidia)
 
-tested combination: Visual Studio v17 (2022) + CUDA v12.6 + cuDNN v9.5 + TensorRT v10.5
+tested combination: Visual Studio v17 (2022) + CUDA v12.6 + cuDNN v9.6 + TensorRT v10.7
 
 ## 🔖 easy 1st steps with graphical interface 📱
 
