@@ -6,8 +6,8 @@
 
 📑 in case u still somehow need official docs:
 - CUDA: https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html
-- cuDNN: https://docs.nvidia.com/deeplearning/cudnn/installation/windows.html
-- TensorRT: https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html
+- cuDNN: https://docs.nvidia.com/deeplearning/cudnn/installation/latest/windows.html
+- TensorRT: https://docs.nvidia.com/deeplearning/tensorrt/latest/installing-tensorrt/installing.html
 
 📑 in case u need info about cuda compute capability:
 - https://developer.nvidia.com/cuda-gpus
@@ -18,7 +18,7 @@
 
 prepare at least 15 GiB disk space (10 GiB msvc + 5 GiB nvidia)
 
-tested combination: Visual Studio v17 (2022) + CUDA v12.6 + cuDNN v9.6 + TensorRT v10.7
+tested combination: Visual Studio v17 (2022) + CUDA v12.8 + cuDNN v9.7 + TensorRT v10.8
 
 ## 🔖 easy 1st steps with graphical interface 📱
 
@@ -26,10 +26,7 @@ tested combination: Visual Studio v17 (2022) + CUDA v12.6 + cuDNN v9.6 + TensorR
 
 ⏬ **download**: https://www.nvidia.com/download/index.aspx
 
-alternatively install companion software:
-- https://www.nvidia.com/en-us/software/nvidia-app/
-- https://www.nvidia.com/en-us/geforce/geforce-experience/
-- https://www.nvidia.com/en-us/design-visualization/software/rtx-experience/
+alternatively install companion software: https://www.nvidia.com/en-us/software/nvidia-app/
 
 each cuda version requires a minimum driver version, see: https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
 
@@ -64,7 +61,7 @@ see where to find header files: `echo %INCLUDE%` (cmd) or `echo $env:INCLUDE` (p
 👉 when install, select “Advanced” → select at least “Development” + “Runtime”, and if Visual Studio installed “VS integration”
 
 🔎 verify after install: open System Properties > tab Advanced > Environment Variables > system
-- should have `%CUDA_PATH%` and `%CUDA_PATH_V12_6%` set to `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6`
+- should have `%CUDA_PATH%` and `%CUDA_PATH_V12_8%` set to `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8`
 - `%PATH%` should contain `%CUDA_PATH%\bin` &  `%CUDA_PATH%\libnvvp` but not other things from `%CUDA_PATH%`
 - optional: if not exist, set `%CUDA_HOME%` & `%CUDA_ROOT%` same as `%CUDA_PATH%`
 - optional: if exist `%LD_LIBRARY_PATH%` add `%CUDA_PATH%\lib\x64`
@@ -77,7 +74,7 @@ see where to find header files: `echo %INCLUDE%` (cmd) or `echo $env:INCLUDE` (p
 
 only needed if install Visual C++ Build Tools (instead of the full Visual Studio)
 
-copy all 4 files from `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\extras\visual_studio_integration\MSBuildExtensions` to the directory: `C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Microsoft\VC\v170\BuildCustomizations`
+copy all 4 files from `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\extras\visual_studio_integration\MSBuildExtensions` to the directory: `C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Microsoft\VC\v170\BuildCustomizations`
 
 ## 🔖 convoluted steps without installer 🗿
 

@@ -43,25 +43,25 @@ new_local_repository(
 new_local_repository(
     name = "cuda",
     build_file = "@//third_party/cuda:BUILD",
-    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6",
+    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.8",
 )
 
 new_local_repository(
     name = "cublas",
     build_file = "@//third_party/cublas:BUILD",
-    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6",
+    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.8",
 )
 
 new_local_repository(
     name = "cudnn",
     build_file = "@//third_party/cudnn/local:BUILD",
-    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6",
+    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.8",
 )
 
 new_local_repository(
     name = "tensorrt",
     build_file = "@//third_party/tensorrt/local:BUILD",
-    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6",
+    path = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.8",
 )
 ```
 edit file `.bazelrc`: change `-fdiagnostics-color=always` to `/diagnostics:caret` and `-std=c++17` to `/std:c++17`
