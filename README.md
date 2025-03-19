@@ -1,8 +1,8 @@
 ![License](https://img.shields.io/github/license/phineas-pta/NVIDIA-win?logo=creativecommons)
 ![Platform](https://img.shields.io/badge/Platform-win_64-0078D4?logo=windows)
 ![Cuda](https://img.shields.io/badge/CUDA-v12.8-76B900?logo=nvidia)
-![Cudnn](https://img.shields.io/badge/cuDNN-v9.7-76B900?logo=nvidia)
-![Tensorrt](https://img.shields.io/badge/TensorRT-v10.8-76B900?logo=nvidia)
+![Cudnn](https://img.shields.io/badge/cuDNN-v9.8-76B900?logo=nvidia)
+![Tensorrt](https://img.shields.io/badge/TensorRT-v10.9-76B900?logo=nvidia)
 ![Python](https://img.shields.io/badge/python-v3.1x-3776AB?logo=python)
 ![VS](https://img.shields.io/badge/Visual_Studio-v17_2022-5C2D91?logo=visualstudio)
 ![Cmake](https://img.shields.io/badge/CMake-v3.2x-064F8C?logo=cmake)
@@ -28,7 +28,7 @@ my attempts to build various deep learning libraries:
 6. [build OpenCV with CUDA](test06-opencv.md) ✅
 7. [build Torch-TensorRT](test07-torch-tensorrt.md) ❌
 8. [build llama.cpp with cuBLAS](test08-llama.cpp-cublas.md) ✅
-9. [build Stan with OpenCL](test09-stan-opencl.md)
+9. [build Stan with OpenCL](test09-stan-opencl.md) ✅
 
 all above guides are under CC-BY-4.0
 

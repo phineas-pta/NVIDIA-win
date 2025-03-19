@@ -18,7 +18,7 @@
 
 prepare at least 15 GiB disk space (10 GiB msvc + 5 GiB nvidia)
 
-tested combination: Visual Studio v17 (2022) + CUDA v12.8 + cuDNN v9.7 + TensorRT v10.8
+tested combination: Visual Studio v17 (2022) + CUDA v12.8 + cuDNN v9.8 + TensorRT v10.9
 
 ## 🔖 easy 1st steps with graphical interface 📱
 
@@ -38,9 +38,11 @@ if need compile binaries with cuda
 - https://visualstudio.microsoft.com/visual-cpp-build-tools/ (more lightweight)
 - https://visualstudio.microsoft.com/downloads/ (better integration with cuda)
 
-⚠️ Visual Studio (VS) not visual studio code (vscode), the latter has nothing to do in all my guide
+> [!WARNING]
+> Visual Studio (VS) not visual studio code (vscode), the latter has nothing to do in all my guide
 
-👉 when install, select checkbox “Desktop Development with C++”
+> [!IMPORTANT]
+> when install, select checkbox “Desktop Development with C++”
 
 🔎 verify after install: in Start menu, there’re 2 new items “Developer Command Prompt for VS 2022” & “Developer PowerShell for VS 2022”
 
@@ -68,7 +70,8 @@ see where to find header files: `echo %INCLUDE%` (cmd) or `echo $env:INCLUDE` (p
 
 🔎 also verify if `nvcc --version` return correct cuda version
 
-*N.B.* `nvidia-smi` show max cuda version of driver, even if cuda not installed
+> [!NOTE]
+> `nvidia-smi` show max cuda version of driver, even if cuda not installed
 
 #### CMake CUDA fix
 
@@ -80,13 +83,15 @@ copy all 4 files from `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.8\
 
 ⚠️ need NVIDIA acc + join Developer Program
 
-⚠️ open an **admin cmd console** to use throughout following steps
+> [!IMPORTANT]
+> open an **admin cmd console** to use throughout following steps
 
 if u prefer pwsh instead, in following steps replace `COPY` with `Copy-Item` and `%CUDA_PATH%` with `$env:CUDA_PATH`
 
 *N.B.* native Windows consoles are case-insensitive (msys2/cygwin is not native)
 
-⚠️ if multiple cuda versions co-exist, in following steps replace `CUDA_PATH` with the corresponding `CUDA_PATH_V1█_█`
+> [!TIP]
+> if multiple cuda versions co-exist, in following steps replace `CUDA_PATH` with the corresponding `CUDA_PATH_V1█_█`
 
 *N.B.* call `CUDA_PATH` in double quotes coz path contain whitespaces
 
@@ -99,7 +104,8 @@ if u prefer pwsh instead, in following steps replace `COPY` with `Copy-Item` and
 
 ### 3️⃣ cuDNN
 
-**update:** new graphical installer starting from v9
+> [!NOTE]
+> **update:** new graphical installer starting from v9
 
 ⏬ **download** either:
 - https://developer.nvidia.com/rdp/cudnn-download (latest version)
@@ -126,7 +132,8 @@ copy 7 cudnn `.dll` files to pytorch lib directory
 
 *N.B.* this library is in official docs but poorly explained, should be improved in future version of cudnn
 
-**update:** no need this step starting from cudnn v9
+> [!NOTE]
+> **update:** no need this step starting from cudnn v9
 
 ⏬ **download**: https://www.winimage.com/zLibDll/zlib123dllx64.zip
 
@@ -177,6 +184,8 @@ for e.g.
 - http://developer.nvidia.com/cudss-downloads
 - https://developer.nvidia.com/nvidia-video-codec-sdk/download
 - https://developer.nvidia.com/nvjpeg2000-downloads
+- https://developer.nvidia.com/nppplus-downloads
+- https://developer.nvidia.com/cusparselt-downloads (need Ampere and later)
 
 cuda header files: https://gitlab.com/nvidia/headers
 

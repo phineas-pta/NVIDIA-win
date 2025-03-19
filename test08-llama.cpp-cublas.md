@@ -1,6 +1,7 @@
 # Test 8: build `llama.cpp` with cuBLAS on Windows
 
-**N.B.:** pre-built binaries: https://github.com/ggerganov/llama.cpp/releases
+> [!TIP]
+> pre-built binaries: https://github.com/ggerganov/llama.cpp/releases
 
 official docs: https://github.com/ggerganov/llama.cpp/blob/master/docs/build.md
 

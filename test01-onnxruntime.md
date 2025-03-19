@@ -6,11 +6,11 @@
 
 prepare at least 3 GiB disk space
 
-tested version: onnxruntime v1.20.1
+tested version: onnxruntime v1.21.0
 ```
 git clone
 	--single-branch
-	--branch=rel-1.20.1
+	--branch=rel-1.21.0
 	--depth=1
 	--recurse-submodules
 	--shallow-submodules
@@ -42,7 +42,7 @@ python tools/ci_build/build.py
 ```
 may take >1h
 
-wheel file in `build\Release\Release\dist\onnxruntime_gpu-1.20.1-cp3██-cp3██-win_amd64.whl`
+wheel file in `build\Release\Release\dist\onnxruntime_gpu-1.21.0-cp3██-cp3██-win_amd64.whl`
 
 test python code
 ```python

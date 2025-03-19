@@ -1,6 +1,9 @@
 # Test 7: build Torch-TensorRT on Windows
 
-**update:** official windows wheels strating from v2.3: `pip install torch_tensorrt`
+> [!IMPORTANT]
+> **update:** official windows wheels strating from v2.3: `pip install torch_tensorrt`
+
+---
 
 📑 in case u need official docs:
 - https://pytorch.org/TensorRT/getting_started/installation.html (full setup on linux)

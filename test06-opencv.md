@@ -1,12 +1,13 @@
 # Test 6: build OpenCV with CUDA on Windows
 
-**update:** unofficial cuda-supported wheels: https://github.com/cudawarped/opencv-python-cuda-wheels/releases
+> [!TIP]
+> **update:** unofficial cuda-supported wheels: https://github.com/cudawarped/opencv-python-cuda-wheels/releases
 
 this guide here is more customized
 
 prepare at least 10 GiB disk space
 
-tested version: opencv v4.10
+tested version: opencv v4.11
 ```
 git clone
 	--single-branch
@@ -39,7 +40,7 @@ if error `Compiler doesn't support baseline optimization flags` then add `-D CV_
 
 may take >1h
 
-wheel file in `dist\opencv_contrib_python_rolling-4.10.███-cp3██-cp3██-win_amd64.whl`
+wheel file in `dist\opencv_contrib_python_rolling-4.11.███-cp3██-cp3██-win_amd64.whl`
 
 test python code
 ```python
