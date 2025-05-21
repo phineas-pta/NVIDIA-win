@@ -7,7 +7,7 @@
 
 prepare at least 5 GiB disk space (4 GiB llvm + 1 GiB triton)
 
-tested version: triton v3.1.0 + llvm v17
+tested version: triton v3.3.0 + llvm v17
 
 ## preparation
 
@@ -15,7 +15,7 @@ need Visual Studio console + prepare a fresh python env
 ```
 git clone
 	--single-branch
-	--branch=release/3.1.x
+	--branch=release/3.3.x
 	--depth=1
 	--recurse-submodules
 	--shallow-submodules
@@ -25,7 +25,7 @@ take note of LLVM commit hash in: file `cmake/llvm-hash.txt` or file `python/set
 
 ## build LLVM
 
-get full LLVM repo in zip: `https://github.com/llvm/llvm-project/archive/10dc3a8e916d73291269e5e2b82dd22681489aa1.zip`<br />
+get full LLVM repo in zip: `https://github.com/llvm/llvm-project/archive/a66376b0dc3b2ea8a84fda26faca287980986f78.zip`<br />
 change commit hash accordingly<br />
 DO NOT DO git clone & checkout coz repo too big, also don’t get `main HEAD` coz possible incompatibility
 
@@ -88,7 +88,7 @@ if error `fatal error LNK1104: cannot open file 'python3██.lib'` then edit f
 
 if other error, wait for fix see https://github.com/triton-lang/triton/issues/1640#issuecomment-1695521195
 
-wheel file in `dist\triton-3.1.0-cp3██-cp3██-win_amd64.whl`
+wheel file in `dist\triton-3.3.0-cp3██-cp3██-win_amd64.whl`
 
 still cannot use wheel: `No module named 'triton._C.libtriton'`
 

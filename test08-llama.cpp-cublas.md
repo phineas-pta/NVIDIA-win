@@ -20,5 +20,6 @@ normal console (no need Visual Studio nor python)
 build\bin\Release\llama-server.exe -ngl 99 --no-mmap -c 8192 -ctk q8_0 -ctv q8_0 -fa -m Phi-3.5-mini-instruct-Q8_0.gguf
 ```
 usage:
-- https://github.com/ggerganov/llama.cpp/blob/master/examples/main/README.md
-- https://github.com/ggerganov/llama.cpp/blob/master/examples/server/README.md
+- https://github.com/ggml-org/llama.cpp/blob/master/tools/main/README.md
+- https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md
+- https://github.com/ggml-org/llama.cpp/blob/master/tools/mtmd/README.md

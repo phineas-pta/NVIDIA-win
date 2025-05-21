@@ -21,7 +21,7 @@ STAN_THREADS=true
 STAN_OPENCL=true
 OPENCL_PLATFORM_ID=0
 OPENCL_DEVICE_ID=0
-LDFLAGS_OPENCL=-L"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.8/lib/x64" -lOpenCL
+LDFLAGS_OPENCL=-L"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.9/lib/x64" -lOpenCL
 ```
 
 need Rtools Msys2 console setup with `mingw32-make` + `g++`
