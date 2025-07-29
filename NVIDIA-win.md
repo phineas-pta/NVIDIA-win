@@ -11,14 +11,14 @@
 
 📑 in case u need info about cuda compute capability:
 - https://developer.nvidia.com/cuda-gpus
-- https://docs.nvidia.com/deeplearning/cudnn/reference/support-matrix.html
+- https://docs.nvidia.com/deeplearning/cudnn/backend/latest/reference/support-matrix.html
 - https://docs.nvidia.com/deeplearning/tensorrt/support-matrix/index.html#hardware-precision-matrix
 - https://developer.nvidia.com/video-encode-and-decode-gpu-support-matrix-new
 - https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#gpu-feature-list
 
 prepare at least 15 GiB disk space (10 GiB msvc + 5 GiB nvidia)
 
-tested combination: Visual Studio v17 (2022) + CUDA v12.9 + cuDNN v9.10 + TensorRT v10.11
+tested combination: Visual Studio v17 (2022) + CUDA v12.9 + cuDNN v9.11 + TensorRT v10.12
 
 ## 🔖 easy 1st steps with graphical interface 📱
 
