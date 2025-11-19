@@ -18,7 +18,7 @@ initialize cmd with mamba: `███\miniforge3\Scripts\activate.bat ███\
 
 initialize pwsh with mamba: `(& '███\miniforge3\Scripts\conda.exe' 'shell.powershell' 'hook') | Out-String | ?{$_} | Invoke-Expression`
 
-change conda env var: `conda env config vars set -n ███ XDG_CACHE_HOME=███/cache`
+change conda env var: `conda env config vars set -n ███ XDG_CACHE_HOME=███/cache HF_HOME=███/cache PIP_CACHE_DIR=███/cache`
 
 on windows, cuda < 12.3, should add `CUDA_MODULE_LOADING=LAZY`
 

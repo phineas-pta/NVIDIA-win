@@ -7,7 +7,7 @@
 
 prepare at least 5 GiB disk space (4 GiB llvm + 1 GiB triton)
 
-tested version: triton v3.3.0 + llvm v17
+tested version: triton v3.5.1 + llvm v17
 
 ## preparation
 
@@ -15,7 +15,7 @@ need Visual Studio console + prepare a fresh python env
 ```
 git clone
 	--single-branch
-	--branch=release/3.3.x
+	--branch=release/3.5.x
 	--depth=1
 	--recurse-submodules
 	--shallow-submodules
@@ -88,7 +88,7 @@ if error `fatal error LNK1104: cannot open file 'python3██.lib'` then edit f
 
 if other error, wait for fix see https://github.com/triton-lang/triton/issues/1640#issuecomment-1695521195
 
-wheel file in `dist\triton-3.3.0-cp3██-cp3██-win_amd64.whl`
+wheel file in `dist\triton-3.5.1-cp3██-cp3██-win_amd64.whl`
 
 still cannot use wheel: `No module named 'triton._C.libtriton'`
 

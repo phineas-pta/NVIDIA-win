@@ -98,8 +98,8 @@ need Visual Studio console + prepare a fresh python env
 pip install numpy build
 python build/build.py
 	--bazel_path="<path to>/bazel.exe"
-	--bazel_options=--repo_env=LOCAL_CUDA_PATH="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.9"
-	--bazel_options=--repo_env=LOCAL_CUDNN_PATH="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.9"
+	--bazel_options=--repo_env=LOCAL_CUDA_PATH="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.0"
+	--bazel_options=--repo_env=LOCAL_CUDNN_PATH="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.0"
 	--enable_cuda
 	--cuda_compute_capabilities="sm_██"
 ```
@@ -107,4 +107,4 @@ cannot use `%CUDA_PATH%` coz it failed to parse windows path
 
 FAILED: problem with bazel build, no support for cuda windows
 
-linux-only: `pip install 'jax[cuda12_local]'`
+linux-only: `pip install 'jax[cuda13]'`
