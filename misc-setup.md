@@ -1,12 +1,32 @@
 # miscellaneous setup
 
+## environment variables
+
+need admin privilege
+
+```batch
+SETX XDG_CACHE_HOME █:\cache
+SETX HF_HOME=█:\cache
+SETX PIP_CACHE_DIR=█:\cache
+SETX UV_CACHE_DIR=█:\cache
+SETX CMAKE_CUDA_ARCHITECTURES native
+
+SETX POWERSHELL_CLI_TELEMETRY_OPTOUT 1 /M
+SETX POWERSHELL_TELEMETRY_OPTOUT 1 /M
+SETX POWERSHELL_UPDATECHECK Off /M
+SETX POWERSHELL_UPDATECHECK_OPTOUT 1 /M
+SETX DOTNET_CLI_TELEMETRY_OPTOUT 1 /M
+SETX DOTNET_TELEMETRY_OPTOUT 1 /M
+SETX COMPlus_EnableDiagnostics 0 /M
+```
+
 ## visual studio
 
 ⏬ **download**: https://visualstudio.microsoft.com/visual-cpp-build-tools/
 
-initialize cmd with build tools: `"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"`
+initialize cmd with build tools: `"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars64.bat"`
 
-initialize pwsh with build tools: `&{Import-Module 'C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -VsInstallPath 'C:\Program Files\Microsoft Visual Studio\2022\Community' -DevCmdArguments '-arch=x64'}`
+initialize pwsh with build tools: `&{Import-Module 'C:\Program Files\Microsoft Visual Studio\18\Community\Common7\Tools\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -VsInstallPath 'C:\Program Files\Microsoft Visual Studio\18\Community' -DevCmdArguments '-arch=x64'}`
 
 or edit start menu shortcut by adding `-arch=x64 -host_arch=x64`
 
@@ -18,20 +38,20 @@ initialize cmd with mamba: `███\miniforge3\Scripts\activate.bat ███\
 
 initialize pwsh with mamba: `(& '███\miniforge3\Scripts\conda.exe' 'shell.powershell' 'hook') | Out-String | ?{$_} | Invoke-Expression`
 
-change conda env var: `conda env config vars set -n ███ XDG_CACHE_HOME=███/cache HF_HOME=███/cache PIP_CACHE_DIR=███/cache`
-
-on windows, cuda < 12.3, should add `CUDA_MODULE_LOADING=LAZY`
-
 ## some basic python package
 
-`pip install jupyterlab ipywidgets scikit-learn-intelex seaborn sympy tqdm tensorboard cupy-cuda12x`
+use `uv` is much faster
+
+`uv pip install jupyterlab ipywidgets matplotlib sympy tensorboard`
 
 install deep learning frameworks:
 - torch: see https://pytorch.org/get-started/locally/
 - onnx: see https://onnxruntime.ai/getting-started
 - paddlepaddle: see https://www.paddlepaddle.org.cn/documentation/docs/en/install/pip/windows-pip_en.html
 
-install hf ecosystem: `pip install transformers diffusers accelerate "datasets[audio,vision]" tokenizers peft bitsandbytes "optimum[onnxruntime-gpu]" sentence_transformers timm`
+install hf ecosystem: `uv pip install transformers diffusers accelerate "datasets[audio,vision]" tokenizers peft bitsandbytes "optimum[onnxruntime-gpu]"`
+
+additional stuff: `uv pip install triton-windows xformers torch-tensorr cupy-cuda13xt`
 
 intel distribution for python: `mamba install intelpython3_full -c https://software.repos.intel.com/python/conda/`
 
@@ -67,7 +87,3 @@ x = CUDA.fill(1.0f0, N);
 y = CUDA.fill(2.0f0, N);
 z = x .+ y;
 ```
-
-quick convert onnx trt `trtexec --threads --best --builderOptimizationLevel=5 --onnx=model.onnx --saveEngine=model.trt`
-
-build pytorch from source: https://pytorch.org/docs/stable/notes/windows.html

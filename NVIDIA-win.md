@@ -18,7 +18,7 @@
 
 prepare at least 15 GiB disk space (10 GiB msvc + 5 GiB nvidia)
 
-tested combination: Visual Studio v17 (2022) + CUDA v1.0 + cuDNN v9.16 + TensorRT v10.14
+tested combination: Visual Studio v18 (2026) + CUDA v13.2 + cuDNN v9.20 + TensorRT v10.16
 
 ## 🔖 easy 1st steps with graphical interface 📱
 
@@ -47,10 +47,10 @@ if need compile binaries with cuda
 🔎 verify after install: in Start menu, there’re 2 new items “Developer Command Prompt for VS 2022” & “Developer PowerShell for VS 2022”
 
 if u open any of those 2 and run any of these following commands, it should return messages instead of errors
-- `cmake --version` returns `3.2█.█-msvc1`
+- `cmake --version` returns `4.█.█`
 - `cl` returns `19.██.███`
-- `msbuild -ver` returns `17.█.█`
-- `ninja --version` returns `1.11.█`
+- `msbuild -ver` returns `18.█.█`
+- `ninja --version` returns `1.12.█`
 
 see where to find header files: `echo %INCLUDE%` (cmd) or `echo $env:INCLUDE` (pwsh)
 
@@ -63,7 +63,7 @@ see where to find header files: `echo %INCLUDE%` (cmd) or `echo $env:INCLUDE` (p
 👉 when install, select “Advanced” → select at least “Development” + “Runtime”, and if Visual Studio installed “VS integration”
 
 🔎 verify after install: open System Properties > tab Advanced > Environment Variables > system
-- should have `%CUDA_PATH%` and `%CUDA_PATH_V13_0%` set to `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0`
+- should have `%CUDA_PATH%` and `%CUDA_PATH_V13_2%` set to `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.2`
 - `%PATH%` should contain `%CUDA_PATH%\bin` &  `%CUDA_PATH%\libnvvp` but not other things from `%CUDA_PATH%`
 - optional: if not exist, set `%CUDA_HOME%` & `%CUDA_ROOT%` same as `%CUDA_PATH%`
 - optional: if exist `%LD_LIBRARY_PATH%` add `%CUDA_PATH%\lib\x64`
@@ -72,12 +72,6 @@ see where to find header files: `echo %INCLUDE%` (cmd) or `echo $env:INCLUDE` (p
 
 > [!NOTE]
 > `nvidia-smi` show max cuda version of driver, even if cuda not installed
-
-#### CMake CUDA fix
-
-only needed if install Visual C++ Build Tools (instead of the full Visual Studio)
-
-copy all 4 files from `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0\extras\visual_studio_integration\MSBuildExtensions` to the directory: `C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Microsoft\VC\v170\BuildCustomizations`
 
 ## 🔖 convoluted steps without installer 🗿
 
@@ -91,7 +85,7 @@ if u prefer pwsh instead, in following steps replace `COPY` with `Copy-Item` and
 *N.B.* native Windows consoles are case-insensitive (msys2/cygwin is not native)
 
 > [!TIP]
-> if multiple cuda versions co-exist, in following steps replace `CUDA_PATH` with the corresponding `CUDA_PATH_V13_0`
+> if multiple cuda versions co-exist, in following steps replace `CUDA_PATH` with the corresponding `CUDA_PATH_V13_2`
 
 *N.B.* call `CUDA_PATH` in double quotes coz path contain whitespaces
 

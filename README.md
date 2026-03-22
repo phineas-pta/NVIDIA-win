@@ -1,11 +1,11 @@
 ![License](https://img.shields.io/github/license/phineas-pta/NVIDIA-win?logo=creativecommons)
 ![Platform](https://img.shields.io/badge/Platform-win_64-0078D4?logo=windows)
-![Cuda](https://img.shields.io/badge/CUDA-v13.0-76B900?logo=nvidia)
-![Cudnn](https://img.shields.io/badge/cuDNN-v9.16-76B900?logo=nvidia)
-![Tensorrt](https://img.shields.io/badge/TensorRT-v10.14-76B900?logo=nvidia)
+![Cuda](https://img.shields.io/badge/CUDA-v13.2-76B900?logo=nvidia)
+![Cudnn](https://img.shields.io/badge/cuDNN-v9.20-76B900?logo=nvidia)
+![Tensorrt](https://img.shields.io/badge/TensorRT-v10.16-76B900?logo=nvidia)
 ![Python](https://img.shields.io/badge/python-v3.1x-3776AB?logo=python)
-![VS](https://img.shields.io/badge/Visual_Studio-v17_2022-5C2D91?logo=visualstudio)
-![Cmake](https://img.shields.io/badge/CMake-v3.2x-064F8C?logo=cmake)
+![VS](https://img.shields.io/badge/Visual_Studio-v18_2026-5C2D91?logo=visualstudio)
+![Cmake](https://img.shields.io/badge/CMake-v4-064F8C?logo=cmake)
 
 # NVIDIA-win
 
@@ -22,11 +22,11 @@ some values are censored with black box ███ so u have to fill in with your
 my attempts to build various deep learning libraries:
 1. [build onnxruntime](test01-onnxruntime.md) ✅
 2. [build whisper.cpp with cuBLAS](test02-whisper.cpp-cublas.md) ✅
-3. [build CTranslate2 to use faster-whisper](test03-ctranslate2.md) ❌
-4. [build triton to use xformers](test04-triton.md) ❌
-5. [try out TensorRT-LLM](test05-trt-llm.md) ❌
+3. ~~build CTranslate2 to use faster-whisper~~ ❌
+4. ~~build triton to use xformers~~ ❌
+5. ~~try out TensorRT-LLM~~ ❌
 6. [build OpenCV with CUDA](test06-opencv.md) ✅
-7. [build Torch-TensorRT](test07-torch-tensorrt.md) ❌
+7. ~~build Torch-TensorRT~~ ❌
 8. [build llama.cpp with cuBLAS](test08-llama.cpp-cublas.md) ✅
 9. [build Stan with OpenCL](test09-stan-opencl.md) ✅
 

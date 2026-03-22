@@ -7,7 +7,7 @@
 
 prepare at least 2 GiB disk space
 
-tested version: CmdStan v2.37.0: https://github.com/stan-dev/cmdstan/releases/download/v2.37.0/cmdstan-2.37.0.tar.gz
+tested version: CmdStan v2.38.0: https://github.com/stan-dev/cmdstan/releases/download/v2.38.0/cmdstan-2.38.0.tar.gz
 
 untar the file then create a file named `local` inside the `make` folder with:
 ```
@@ -21,7 +21,7 @@ STAN_THREADS=true
 STAN_OPENCL=true
 OPENCL_PLATFORM_ID=0
 OPENCL_DEVICE_ID=0
-LDFLAGS_OPENCL=-L"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.0/lib/x64" -lOpenCL
+LDFLAGS_OPENCL=-L"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v13.2/lib/x64" -lOpenCL
 ```
 
 need Rtools Msys2 console setup with `mingw32-make` + `g++`
@@ -29,7 +29,7 @@ need Rtools Msys2 console setup with `mingw32-make` + `g++`
 mingw32-make -j build
 ```
 
-additional step: `export PATH=$PATH:███/cmdstan-2.36.0/stan/lib/stan_math/lib/tbb`
+additional step: `export PATH=$PATH:███/cmdstan-2.38.0/stan/lib/stan_math/lib/tbb`
 
 **R script for installation**
 ```r

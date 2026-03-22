@@ -6,11 +6,11 @@
 
 prepare at least 3 GiB disk space
 
-tested version: onnxruntime v1.23.2
+tested version: onnxruntime v1.24.4
 ```
 git clone
 	--single-branch
-	--branch=rel-1.23.2
+	--branch=rel-1.24.4
 	--depth=1
 	--recurse-submodules
 	--shallow-submodules
@@ -36,13 +36,13 @@ python tools/ci_build/build.py
 	--cuda_home="%CUDA_PATH%"
 	--cudnn_home="%CUDA_PATH%"
 	--tensorrt_home="%CUDA_PATH%"
-	--cmake_generator="Visual Studio 17 2022"
+	--cmake_generator="Visual Studio 18 2026"
 	--numpy_version="1.██.█"
 	--cmake_extra_defines="CMAKE_CUDA_ARCHITECTURES=native"
 ```
 may take >1h
 
-wheel file in `build\Release\Release\dist\onnxruntime_gpu-1.23.2-cp3██-cp3██-win_amd64.whl`
+wheel file in `build\Release\Release\dist\onnxruntime_gpu-1.24.4-cp3██-cp3██-win_amd64.whl`
 
 test python code
 ```python

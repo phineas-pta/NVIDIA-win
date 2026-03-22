@@ -1,13 +1,13 @@
 # Test 8: build `llama.cpp` with cuBLAS on Windows
 
 > [!TIP]
-> pre-built binaries: https://github.com/ggerganov/llama.cpp/releases
+> pre-built binaries: https://github.com/ggml-org/llama.cpp/releases
 
-official docs: https://github.com/ggerganov/llama.cpp/blob/master/docs/build.md
+official docs: https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md
 
 need 600 MiB disk space
 ```bash
-git clone --single-branch --depth=1 --recurse-submodules --shallow-submodules https://github.com/ggerganov/llama.cpp
+git clone --single-branch --depth=1 --recurse-submodules --shallow-submodules https://github.com/ggml-org/llama.cpp
 ```
 need Visual Studio console
 ```powershell
@@ -20,6 +20,7 @@ normal console (no need Visual Studio nor python)
 build\bin\Release\llama-server.exe -ngl 99 --no-mmap -c 8192 -ctk q8_0 -ctv q8_0 -fa -m Phi-3.5-mini-instruct-Q8_0.gguf
 ```
 usage:
-- https://github.com/ggml-org/llama.cpp/blob/master/tools/main/README.md
+- https://github.com/ggml-org/llama.cpp/blob/master/tools/cli/README.md
 - https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md
+- https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/README.md
 - https://github.com/ggml-org/llama.cpp/blob/master/tools/mtmd/README.md
