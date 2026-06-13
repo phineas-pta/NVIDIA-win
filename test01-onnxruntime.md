@@ -2,15 +2,16 @@
 
 📑 in case u need official docs:
 - https://onnxruntime.ai/docs/build/inferencing.html
+- https://onnxruntime.ai/docs/build/eps.html
 - https://github.com/microsoft/onnxruntime/blob/main/tools/ci_build/build.py
 
 prepare at least 3 GiB disk space
 
-tested version: onnxruntime v1.24.4
+tested version: onnxruntime v1.26.0
 ```
 git clone
 	--single-branch
-	--branch=rel-1.24.4
+	--branch=rel-1.26.0
 	--depth=1
 	--recurse-submodules
 	--shallow-submodules
@@ -33,16 +34,17 @@ python tools/ci_build/build.py
 	--skip_submodule_sync
 	--use_cuda
 	--use_tensorrt
+	--use_nv_tensorrt_rtx
 	--cuda_home="%CUDA_PATH%"
 	--cudnn_home="%CUDA_PATH%"
 	--tensorrt_home="%CUDA_PATH%"
+	--tensorrt_rtx_home="%CUDA_PATH%"
 	--cmake_generator="Visual Studio 18 2026"
-	--numpy_version="1.██.█"
 	--cmake_extra_defines="CMAKE_CUDA_ARCHITECTURES=native"
 ```
 may take >1h
 
-wheel file in `build\Release\Release\dist\onnxruntime_gpu-1.24.4-cp3██-cp3██-win_amd64.whl`
+wheel file in `build\Release\Release\dist\onnxruntime_gpu-1.26.0-cp3██-cp3██-win_amd64.whl`
 
 test python code
 ```python

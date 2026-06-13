@@ -18,7 +18,7 @@
 
 prepare at least 15 GiB disk space (10 GiB msvc + 5 GiB nvidia)
 
-tested combination: Visual Studio v18 (2026) + CUDA v13.2 + cuDNN v9.20 + TensorRT v10.16
+tested combination: Visual Studio v18 (2026) + CUDA v13.3 + cuDNN v9.23 + TensorRT RTX v1.5 + TensorRT v11.0
 
 ## 🔖 easy 1st steps with graphical interface 📱
 
@@ -63,7 +63,7 @@ see where to find header files: `echo %INCLUDE%` (cmd) or `echo $env:INCLUDE` (p
 👉 when install, select “Advanced” → select at least “Development” + “Runtime”, and if Visual Studio installed “VS integration”
 
 🔎 verify after install: open System Properties > tab Advanced > Environment Variables > system
-- should have `%CUDA_PATH%` and `%CUDA_PATH_V13_2%` set to `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.2`
+- should have `%CUDA_PATH%` and `%CUDA_PATH_V13_3%` set to `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.3`
 - `%PATH%` should contain `%CUDA_PATH%\bin` &  `%CUDA_PATH%\libnvvp` but not other things from `%CUDA_PATH%`
 - optional: if not exist, set `%CUDA_HOME%` & `%CUDA_ROOT%` same as `%CUDA_PATH%`
 - optional: if exist `%LD_LIBRARY_PATH%` add `%CUDA_PATH%\lib\x64`
@@ -85,16 +85,16 @@ if u prefer pwsh instead, in following steps replace `COPY` with `Copy-Item` and
 *N.B.* native Windows consoles are case-insensitive (msys2/cygwin is not native)
 
 > [!TIP]
-> if multiple cuda versions co-exist, in following steps replace `CUDA_PATH` with the corresponding `CUDA_PATH_V13_2`
+> if multiple cuda versions co-exist, in following steps replace `CUDA_PATH` with the corresponding `CUDA_PATH_V13_3`
 
 *N.B.* call `CUDA_PATH` in double quotes coz path contain whitespaces
 
 📑 core **principle** of following steps:
-| files | copy to |
-| --- | --- |
-| `.dll` | `%CUDA_PATH%\bin` |
-| `.lib` | `%CUDA_PATH%\lib` |
-| `.h` | `%CUDA_PATH%\include` |
+| files | copy to | details |
+| --- | --- | --- |
+| `.dll` | `%CUDA_PATH%\bin` | dynamic libraries |
+| `.lib` | `%CUDA_PATH%\lib` | static libraries |
+| `.h` | `%CUDA_PATH%\include` | C/C++ header files |
 
 ### 3️⃣ cuDNN
 
@@ -108,6 +108,7 @@ if u prefer pwsh instead, in following steps replace `COPY` with `Copy-Item` and
 👉 extract zip to a location, navigate console to the extracted folder (in some old cudnn version need to descend into `.\cuda`) then run
 ```batchfile
 COPY bin\cudnn*.dll     "%CUDA_PATH%\bin"
+COPY bin\x64\cudnn*.dll "%CUDA_PATH%\bin\x64"
 COPY lib\x64\cudnn*.lib "%CUDA_PATH%\lib\x64"
 COPY include\cudnn*.h   "%CUDA_PATH%\include"
 ```
@@ -133,12 +134,31 @@ copy 7 cudnn `.dll` files to pytorch lib directory
 
 👉 extract zip to a location, navigate console to in the extracted folder then run
 ```batchfile
-COPY dll_x64\zlibwapi.dll "%CUDA_PATH%\bin"
+COPY dll_x64\zlibwapi.dll "%CUDA_PATH%\bin\x64"
 COPY dll_x64\zlibwapi.lib "%CUDA_PATH%\lib\x64"
 ```
 *N.B.* official code to build from source: https://zlib.net/ (must rename as `zlibwapi`)
 
-### 4️⃣ TensorRT
+### 4️⃣ TensorRT RTX
+
+strimmed-down version of TensorRT for use in consumer GPU
+
+⏬ **download**: https://developer.nvidia.com/tensorrt-rtx
+
+👉 extract zip to a location, navigate console to in the extracted folder then run
+```batchfile
+COPY bin\tensorrt_*     "%CUDA_PATH%\bin"
+COPY lib\tensorrt_*.lib "%CUDA_PATH%\lib"
+COPY include\Nv*.h      "%CUDA_PATH%\include"
+```
+
+for python: `pip install tensorrt_rtx`
+
+header files may be overwritten is use TensorRT below
+
+### 5️⃣ TensorRT
+
+full-fledged version for use in enterprise GPU
 
 ⏬ **download**: https://developer.nvidia.com/tensorrt-download
 
@@ -146,9 +166,11 @@ if latest version has multiple choices: select “GA” (general availability) n
 
 👉 extract zip to a location, navigate console to in the extracted folder then run
 ```batchfile
-COPY bin\*         "%CUDA_PATH%\bin"
-COPY lib\nv*.lib   "%CUDA_PATH%\lib\x64"
-COPY include\Nv*.h "%CUDA_PATH%\include"
+COPY bin\trtexec.exe "%CUDA_PATH%\bin"
+COPY bin\nv*         "%CUDA_PATH%\bin"
+COPY lib\nv*.lib     "%CUDA_PATH%\lib"
+COPY include\Nv*.h   "%CUDA_PATH%\include"
+XCOPY include\impl\  "%CUDA_PATH%\include\impl"
 ```
 
 #### 🐍 python packages for tensorrt (optional)
@@ -157,14 +179,11 @@ only if u need those python pkgs
 
 no need admin console, remember to activate if u use conda/venv
 ```batchfile
-pip install graphsurgeon\graphsurgeon-….whl
-pip install uff\uff-….whl
-pip install onnx_graphsurgeon\onnx_graphsurgeon-….whl
-pip install python\tensorrt-….whl
+pip install python\tensorrt-███.whl
 ```
 alternatively `pip install onnx-graphsurgeon polygraphy uff --extra-index-url=https://pypi.ngc.nvidia.com`<br />(or `https://developer.download.nvidia.com/compute/redist`)
 
-*N.B.* `pip install tensorrt` only available on Linux; for Windows need version ≥9
+for python: `pip install tensorrt` (for Windows need version ≥9)
 
 # other possible libraries with cuda
 

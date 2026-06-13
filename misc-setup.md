@@ -22,8 +22,6 @@ SETX COMPlus_EnableDiagnostics 0 /M
 
 ## visual studio
 
-⏬ **download**: https://visualstudio.microsoft.com/visual-cpp-build-tools/
-
 initialize cmd with build tools: `"C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvars64.bat"`
 
 initialize pwsh with build tools: `&{Import-Module 'C:\Program Files\Microsoft Visual Studio\18\Community\Common7\Tools\Microsoft.VisualStudio.DevShell.dll'; Enter-VsDevShell -VsInstallPath 'C:\Program Files\Microsoft Visual Studio\18\Community' -DevCmdArguments '-arch=x64'}`
@@ -38,6 +36,8 @@ initialize cmd with mamba: `███\miniforge3\Scripts\activate.bat ███\
 
 initialize pwsh with mamba: `(& '███\miniforge3\Scripts\conda.exe' 'shell.powershell' 'hook') | Out-String | ?{$_} | Invoke-Expression`
 
+`conda config --set default_threads 8`
+
 ## some basic python package
 
 use `uv` is much faster
@@ -49,11 +49,11 @@ install deep learning frameworks:
 - onnx: see https://onnxruntime.ai/getting-started
 - paddlepaddle: see https://www.paddlepaddle.org.cn/documentation/docs/en/install/pip/windows-pip_en.html
 
-install hf ecosystem: `uv pip install transformers diffusers accelerate "datasets[audio,vision]" tokenizers peft bitsandbytes "optimum[onnxruntime-gpu]"`
+install hf ecosystem: `uv pip install transformers diffusers "datasets[audio,vision]" accelerate bitsandbytes`
 
-additional stuff: `uv pip install triton-windows xformers torch-tensorr cupy-cuda13xt`
+additional stuff: `uv pip install torchao triton-windows xformers cupy-cuda13x torch-tensorrt-rtx`
 
-intel distribution for python: `mamba install intelpython3_full -c https://software.repos.intel.com/python/conda/`
+debugging info: `python -m torch.utils.collect_env`
 
 ## rtools
 

@@ -11,11 +11,11 @@ cmake -S . -B build -D CMAKE_BUILD_TYPE=Release -D WHISPER_CUBLAS=ON
 msbuild build\ALL_BUILD.vcxproj -noLogo -maxCpuCount -property:Configuration=Release -verbosity:minimal
 # cmake --build build --config Release --parallel
 ```
-download to folder `models/` any of https://huggingface.co/ggerganov/whisper.cpp/tree/main
+download to folder `models/`: https://huggingface.co/ggerganov/whisper.cpp/blob/main/ggml-large-v2.bin
 
 normal console (no need Visual Studio nor python)
 ```powershell
-build\bin\Release\main --threads=█ --print-colors --print-progress --model models\ggml-large.bin --file=samples\jfk.wav
+build\bin\Release\main --threads=█ --print-colors --print-progress --model models\ggml-large-v2.bin --file=samples\jfk.wav
 ```
 additional options: `--language=fr --translate --prompt="initial prompt" --output-srt --output-file=yolo`
 

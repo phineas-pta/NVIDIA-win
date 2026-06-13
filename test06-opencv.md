@@ -1,13 +1,13 @@
 # Test 6: build OpenCV with CUDA on Windows
 
 > [!TIP]
-> **update:** unofficial cuda-supported wheels: https://github.com/cudawarped/opencv-python-cuda-wheels/releases
+> **update:** unofficial cuda-supported wheels: https://github.com/cudawarped/opencv-python-cuda-wheels/releases/latest
 
 this guide here is more customized
 
 prepare at least 10 GiB disk space
 
-tested version: opencv v4.12
+tested version: opencv v4.13
 ```
 git clone
 	--single-branch
@@ -25,7 +25,7 @@ SET CFLAGS=/MP
 SET CXXFLAGS=/MP
 SET ENABLE_CONTRIB=1
 SET ENABLE_ROLLING=1
-SET CMAKE_ARGS=-D CMAKE_BUILD_TYPE=Release -D OPENCV_ENABLE_NONFREE=ON -D BUILD_EXAMPLES=OFF -D WITH_GSTREAMER=OFF -D WITH_CUDA=ON -D OPENCV_DNN_CUDA=ON -D CUDA_ARCH_BIN=█.█ -D CUDA_ARCH_PTX=█.█
+SET CMAKE_ARGS=-D CMAKE_BUILD_TYPE=Release -D OPENCV_ENABLE_NONFREE=ON -D BUILD_EXAMPLES=OFF -D WITH_GSTREAMER=OFF -D WITH_CUDA=ON -D WITH_CUDNN=ON -D WITH_CUBLAS=ON -D OPENCV_DNN_CUDA=ON -D CUDA_ARCH_BIN=█.█ -D CUDA_ARCH_PTX=█.█
 ```
 *N.B.*:
 - in this case do not surround env var with quotes
@@ -40,7 +40,7 @@ if error `Compiler doesn't support baseline optimization flags` then add `-D CV_
 
 may take >1h
 
-wheel file in `dist\opencv_contrib_python_rolling-4.12.███-cp3██-cp3██-win_amd64.whl`
+wheel file in `dist\opencv_contrib_python_rolling-4.13.███-cp3██-cp3██-win_amd64.whl`
 
 test python code
 ```python
