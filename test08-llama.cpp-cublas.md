@@ -17,7 +17,7 @@ msbuild build\ALL_BUILD.vcxproj -noLogo -maxCpuCount -property:Configuration=Rel
 # cmake --build build --config Release --parallel --target llama-quantize llama-server
 ```
 
-usage: ttps://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md
+usage: https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md
 
 test model:
 - https://huggingface.co/google/gemma-4-E4B-it-qat-q4_0-gguf/blob/main/gemma-4-E4B_q4_0-it.gguf
@@ -25,18 +25,23 @@ test model:
 
 ```
 build\bin\Release\llama-server.exe
-	--model=gemma-4-E4B_q4_0-it.gguf
-	--mmproj=gemma-4-E4B-it-mmproj.gguf
-	--n-gpu-layers=all
-	--ctx-size=8192
-	--no-mmap
-	--flash-attn
-	--cache-type-k=q8_0
-	--cache-type-k=q8_0
-	--temperature=1.0
-	--top-p=0.95
-	--top-k=64
-	--tools=all
+	--model gemma-4-E4B_q4_0-it.gguf
+	--mmproj gemma-4-E4B-it-mmproj.gguf
+	--alias gemma4
+	--n-gpu-layers all
+	--ctx-size 131072
+	--fit-target 128
+	--load-mode none
+	--parallel 1
+	--swa-full
+	--flash-attn on
+	--cache-type-k q8_0
+	--cache-type-v q8_0
+	--temperature 1.0
+	--top-p 0.95
+	--top-k 64
+	--min-p 0.0
+	--repeat-penalty 1.1
 ```
 
 interface at `localhost:8080`
@@ -46,13 +51,15 @@ import openai
 client = openai.OpenAI(base_url="http://localhost:8080/v1", api_key="EMPTY")
 
 response = client.responses.create(
-	model="gemma-4-E4B_q4_0-it",
+	model="gemma4",
+	reasoning={"effort": "none"},
+	timeout=3600,
 	instructions="You are ChatGPT, an AI assistant. Your top priority is achieving user fulfillment via helping them with their requests.",
 	input="Write a limerick about python exceptions"
 )
 print(response.output_text)
 
-completion = client.chat.completions.create(model="gemma-4-E4B_q4_0-it", messages=[
+completion = client.chat.completions.create(model="gemma4", reasoning={"effort": "none"}, timeout=3600, messages=[
 	{"role": "system", "content": "You are ChatGPT, an AI assistant. Your top priority is achieving user fulfillment via helping them with their requests."},
 	{"role": "user", "content": "Write a limerick about python exceptions"}
 ])

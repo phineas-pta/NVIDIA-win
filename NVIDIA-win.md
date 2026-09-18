@@ -18,7 +18,7 @@
 
 prepare at least 15 GiB disk space (10 GiB msvc + 5 GiB nvidia)
 
-tested combination: Visual Studio v18 (2026) + CUDA v13.3 + cuDNN v9.23 + TensorRT RTX v1.5 + TensorRT v11.0
+tested combination: Visual Studio v18 (2026) + CUDA v13.4 + cuDNN v9.26 + TensorRT RTX v1.6 + TensorRT v11.3
 
 ## 🔖 easy 1st steps with graphical interface 📱
 
@@ -63,7 +63,7 @@ see where to find header files: `echo %INCLUDE%` (cmd) or `echo $env:INCLUDE` (p
 👉 when install, select “Advanced” → select at least “Development” + “Runtime”, and if Visual Studio installed “VS integration”
 
 🔎 verify after install: open System Properties > tab Advanced > Environment Variables > system
-- should have `%CUDA_PATH%` and `%CUDA_PATH_V13_3%` set to `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.3`
+- should have `%CUDA_PATH%` and `%CUDA_PATH_V13_4%` set to `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.4`
 - `%PATH%` should contain `%CUDA_PATH%\bin` &  `%CUDA_PATH%\libnvvp` but not other things from `%CUDA_PATH%`
 - optional: if not exist, set `%CUDA_HOME%` & `%CUDA_ROOT%` same as `%CUDA_PATH%`
 - optional: if exist `%LD_LIBRARY_PATH%` add `%CUDA_PATH%\lib\x64`
@@ -85,7 +85,7 @@ if u prefer pwsh instead, in following steps replace `COPY` with `Copy-Item` and
 *N.B.* native Windows consoles are case-insensitive (msys2/cygwin is not native)
 
 > [!TIP]
-> if multiple cuda versions co-exist, in following steps replace `CUDA_PATH` with the corresponding `CUDA_PATH_V13_3`
+> if multiple cuda versions co-exist, in following steps replace `CUDA_PATH` with the corresponding `CUDA_PATH_V13_4`
 
 *N.B.* call `CUDA_PATH` in double quotes coz path contain whitespaces
 
@@ -107,10 +107,9 @@ if u prefer pwsh instead, in following steps replace `COPY` with `Copy-Item` and
 
 👉 extract zip to a location, navigate console to the extracted folder (in some old cudnn version need to descend into `.\cuda`) then run
 ```batchfile
-COPY bin\cudnn*.dll     "%CUDA_PATH%\bin"
-COPY bin\x64\cudnn*.dll "%CUDA_PATH%\bin\x64"
-COPY lib\x64\cudnn*.lib "%CUDA_PATH%\lib\x64"
-COPY include\cudnn*.h   "%CUDA_PATH%\include"
+XCOPY bin\x64\ "%CUDA_PATH%\bin\x64\"
+XCOPY lib\x64\ "%CUDA_PATH%\lib\x64\"
+XCOPY include\ "%CUDA_PATH%\include\"
 ```
 
 #### 🐍 boost PyTorch with cudnn fix
@@ -134,8 +133,8 @@ copy 7 cudnn `.dll` files to pytorch lib directory
 
 👉 extract zip to a location, navigate console to in the extracted folder then run
 ```batchfile
-COPY dll_x64\zlibwapi.dll "%CUDA_PATH%\bin\x64"
-COPY dll_x64\zlibwapi.lib "%CUDA_PATH%\lib\x64"
+COPY dll_x64\zlibwapi.dll "%CUDA_PATH%\bin\x64\"
+COPY dll_x64\zlibwapi.lib "%CUDA_PATH%\lib\x64\"
 ```
 *N.B.* official code to build from source: https://zlib.net/ (must rename as `zlibwapi`)
 
@@ -147,14 +146,15 @@ strimmed-down version of TensorRT for use in consumer GPU
 
 👉 extract zip to a location, navigate console to in the extracted folder then run
 ```batchfile
-COPY bin\tensorrt_*     "%CUDA_PATH%\bin"
-COPY lib\tensorrt_*.lib "%CUDA_PATH%\lib"
-COPY include\Nv*.h      "%CUDA_PATH%\include"
+COPY bin\tensorrt_rtx.exe "%CUDA_PATH%\bin\"
+COPY bin\tensorrt_*.dll   "%CUDA_PATH%\bin\x64\"
+XCOPY lib\                "%CUDA_PATH%\lib\x64\"
+XCOPY include\            "%CUDA_PATH%\include\"
 ```
 
 for python: `pip install tensorrt_rtx`
 
-header files may be overwritten is use TensorRT below
+header files may be overwritten if use TensorRT below
 
 ### 5️⃣ TensorRT
 
@@ -166,11 +166,11 @@ if latest version has multiple choices: select “GA” (general availability) n
 
 👉 extract zip to a location, navigate console to in the extracted folder then run
 ```batchfile
-COPY bin\trtexec.exe "%CUDA_PATH%\bin"
-COPY bin\nv*         "%CUDA_PATH%\bin"
-COPY lib\nv*.lib     "%CUDA_PATH%\lib"
-COPY include\Nv*.h   "%CUDA_PATH%\include"
-XCOPY include\impl\  "%CUDA_PATH%\include\impl"
+COPY bin\trtexec.exe "%CUDA_PATH%\bin\"
+COPY bin\nv*.dll     "%CUDA_PATH%\bin\x64\"
+XCOPY lib\           "%CUDA_PATH%\lib\x64\"
+XCOPY include\       "%CUDA_PATH%\include\"
+XCOPY include\impl\  "%CUDA_PATH%\include\impl\"
 ```
 
 #### 🐍 python packages for tensorrt (optional)
